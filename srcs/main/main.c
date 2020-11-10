@@ -12,7 +12,7 @@ int	get_av_un(t_env *env, char *av)
 	if (av[i - 1] != 'c' || av[i - 2] != 'e' || av[i - 3] != 'l' ||
 		av[i - 4] != 'e' || av[i - 5] != '.')
 		return (at_error("wrong file extension"));
-	if ((env->file.fd = open(av, O_RDONLY)) <= 0)
+	if (open(av, O_RDONLY) <= 0)
 	{
 		printf("Error\nCan't find or open %s", av);
 		return (-1);

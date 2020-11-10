@@ -2,7 +2,6 @@
 
 void		init_file(t_env *env)
 {
-	env->file.fd = 0;
-	env->file.size = 0;
-	env->file.txt = NULL;
+	env->data.size = 0;
+	env->data.txt = NULL;
 }

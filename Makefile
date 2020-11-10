@@ -8,18 +8,22 @@ CP	=	cp -r
 
 CFLAGS	=	-Werror -Wextra -Wall -c
 
-SRC		+= at_error.c
-SRC		+= elec.c
-SRC		+= free.c
-SRC		+= get_file.c
-SRC		+= init.c
-SRC		+= init_file.c
-SRC		+= main.c
-SRC		+= parser.c
+SRC		+=	at_error.c
+SRC		+=	at_open.c
+SRC		+=	check_data.c
+SRC		+=	elec.c
+SRC		+=	free.c
+SRC		+=	get_data.c
+SRC		+=	get_file.c
+SRC		+=	init.c
+SRC		+=	init_file.c
+SRC		+=	main.c
+SRC		+=	parser.c
 
-OBJ_PATH	= ./.obj/
+OBJ_PATH	=	./.obj/
 
 vpath %.c srcs/
+vpath %.c srcs/checker
 vpath %.c srcs/free
 vpath %.c srcs/init
 vpath %.c srcs/main
@@ -44,7 +48,7 @@ $(NAME): $(LIB_PATH) $(LIBFT) $(OBJ_PATH) $(OBJ)
 	@$(CC) -o $(NAME) $(OBJ) $(LIBFT)
 
 $(OBJ): $(OBJ_PATH)%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
+	@$(CC) $(CFLAGS) $< -o $@
 
 $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
@@ -66,3 +70,4 @@ fclean: clean
 	@(cd $(LIBFT_PATH) && $(MAKE) fclean)
 
 re: fclean all
+
