@@ -17,7 +17,6 @@ int	check_data(t_env *env);
 ** free
 */
 
-char	**free_get_file(char **txt, size_t *size);
 void	*free_elec(t_env *env, int end);
 
 /*
@@ -38,7 +37,8 @@ int	start_elec(t_env *env);
 */
 
 void	*get_data(t_env *env);
-char	**get_file(t_env *env, char *file_name, size_t *size_file);
+char	**get_file(t_env *env, char *file_name);
+int	get_index(t_env *env);
 int	parser(t_env *env);
 
 /*
@@ -48,5 +48,6 @@ int	parser(t_env *env);
 int	at_error(char *str);
 int	at_open(char *file_name);
 char	*at_err_null(char *str);
+char	*strdup_sep(char *str, char sep);
 
 # endif

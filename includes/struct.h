@@ -4,6 +4,7 @@
 typedef		struct	s_data
 {
 	char	**rules;
+	char	**path;
 	char	***def;
 	size_t	size;
 	char	**txt;
@@ -12,16 +13,18 @@ typedef		struct	s_data
 typedef		struct	s_av
 {
 	char	*one;
+	char	*two;
 }			t_av;
 
-typedef		struct	s_file
+typedef		struct	s_print
 {
-	size_t	size;
-}			t_file;
+	int	index;
+	int	fd;
+}			t_print;
 
 typedef		struct	s_env
 {
-	t_file	file;
+	t_print	print;
 	t_av	av;
 	t_data	data;
 }			t_env;

@@ -59,7 +59,7 @@ static	size_t	file_size(int fd, char *file_name)
 	return (size);
 }
 
-char		**get_file(t_env *env, char *file_name, size_t *size_file)
+char		**get_file(t_env *env, char *file_name)
 {
 	size_t	size;
 	int	fd;
@@ -75,6 +75,5 @@ char		**get_file(t_env *env, char *file_name, size_t *size_file)
 		return (free_elec(env, 2));
 	if (!(txt = get_txt(size, fd)))
 		return (free_elec(env, 3));
-	*size_file = size;
 	return (txt);
 }

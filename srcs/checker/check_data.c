@@ -1,5 +1,15 @@
 #include "../../includes/elec.h"
 
+/*
+** Check a line of .elec extension file.
+**
+** if the first argument has a none alpha character,
+** the function return an error.
+**
+** if there is a space (' ') inside the second argument,
+** the function return an error.
+*/
+
 static	int	check_this_line(char *line)
 {
 	int	i;
@@ -33,8 +43,14 @@ int		check_data(t_env *env)
 	i = 0;
 	while (env->data.txt[i] != NULL)
 	{
-		while (env->data.txt[i][0] == '\0')
+		while (env->data.txt[i] != NULL && env->data.txt[i][0] == '\0')
+		{
 			++i;
+			if (env->data.txt[i] == NULL)
+				break ;
+		}
+		if (env->data.txt[i] == NULL)
+			break ;
 		if (check_this_line(env->data.txt[i]) < 0)
 		{
 			printf("Error\nWrong data in %s\n", env->av.one);

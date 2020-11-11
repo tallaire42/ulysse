@@ -15,10 +15,12 @@ SRC		+=	elec.c
 SRC		+=	free.c
 SRC		+=	get_data.c
 SRC		+=	get_file.c
+SRC		+=	get_index.c
 SRC		+=	init.c
 SRC		+=	init_file.c
 SRC		+=	main.c
 SRC		+=	parser.c
+SRC		+=	strdup_sep.c
 
 OBJ_PATH	=	./.obj/
 
