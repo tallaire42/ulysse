@@ -9,13 +9,13 @@ static	int	match_rule(t_env *env, char *rule)
 	int	i;
 
 	i = 0;
-	while (rule[i] && env->av.two[i])
+	while (rule[i] && env->av.three[i])
 	{
-		if (rule[i] != env->av.two[i])
+		if (rule[i] != env->av.three[i])
 			return (-1);
 		++i;
 	}
-	if (rule[i] != '\0' || env->av.two[i] != '\0')
+	if (rule[i] != '\0' || env->av.three[i] != '\0')
 		return (-1);
 	return (1);
 }
@@ -35,6 +35,6 @@ int		get_index(t_env *env)
 			return (i);
 		++i;
 	}
-	free_elec(env, 4);
+	free_ulysse(env, 4);
 	return (at_error("The rule doesn't exist"));
 }

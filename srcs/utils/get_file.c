@@ -1,5 +1,19 @@
 #include "../../includes/elec.h"
 
+static	void	free_get_file(char **txt)
+{
+	int	i;
+
+	i = 0;
+	while (txt && txt[i])
+	{
+		free(txt[i]);
+		++i;
+	}
+	free(txt);
+	txt = NULL;
+}
+
 /*
 ** Put the text from file to (char **)txt
 */
@@ -59,7 +73,7 @@ static	size_t	file_size(int fd, char *file_name)
 	return (size);
 }
 
-char		**get_file(t_env *env, char *file_name)
+char		**get_file(char *file_name)
 {
 	size_t	size;
 	int	fd;
@@ -68,12 +82,15 @@ char		**get_file(t_env *env, char *file_name)
 	size = 0;
 	fd = 0;
 	if ((fd = at_open(file_name)) < 0)
-		return (free_elec(env, 2));
+		return (NULL);
 	if ((size = file_size(fd, file_name)) < 0)
-		return (free_elec(env, 2));
+		return (NULL);
 	if ((fd = at_open(file_name)) < 0)
-		return (free_elec(env, 2));
+		return (NULL);
 	if (!(txt = get_txt(size, fd)))
-		return (free_elec(env, 3));
+	{
+		free_get_file(txt);
+		return (NULL);
+	}
 	return (txt);
 }

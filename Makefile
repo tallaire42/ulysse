@@ -1,4 +1,4 @@
-NAME	=	elec
+NAME	=	ulysse
 
 CC	=	clang
 
@@ -11,7 +11,6 @@ CFLAGS	=	-Werror -Wextra -Wall -c
 SRC		+=	at_error.c
 SRC		+=	at_open.c
 SRC		+=	check_data.c
-SRC		+=	elec.c
 SRC		+=	free.c
 SRC		+=	get_data.c
 SRC		+=	get_file.c
@@ -20,7 +19,9 @@ SRC		+=	init.c
 SRC		+=	init_file.c
 SRC		+=	main.c
 SRC		+=	parser.c
+SRC		+=	print_file.c
 SRC		+=	strdup_sep.c
+SRC		+=	ulysse.c
 
 OBJ_PATH	=	./.obj/
 
@@ -30,13 +31,18 @@ vpath %.c srcs/free
 vpath %.c srcs/init
 vpath %.c srcs/main
 vpath %.c srcs/parser
+vpath %.c srcs/print
 vpath %.c srcs/utils
 
 OBJ		=	$(patsubst %.c, $(OBJ_PATH)%.o, $(SRC))
 
 LIBFT_NAME	=	libft.a
 
+HEADER_NAME	=	elec.h
+
 LIB_PATH	=	./.lib
+
+HEADER_PATH	=	./includes
 
 LIBFT_PATH	=	./libft
 
@@ -44,12 +50,14 @@ LIBFT_SRC	=	$(addprefix $(LIBFT_PATH)/, $(LIBFT_NAME))
 
 LIBFT		=	$(addprefix $(LIB_PATH)/, $(LIBFT_NAME))
 
+HEADER		=	$(addprefix $(HEADER_PATH)/, $(HEADER_NAME))
+
 all: $(NAME)
 
 $(NAME): $(LIB_PATH) $(LIBFT) $(OBJ_PATH) $(OBJ)
 	@$(CC) -o $(NAME) $(OBJ) $(LIBFT)
 
-$(OBJ): $(OBJ_PATH)%.o: %.c
+$(OBJ): $(OBJ_PATH)%.o: %.c $(HEADER)
 	@$(CC) $(CFLAGS) $< -o $@
 
 $(OBJ_PATH):

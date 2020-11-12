@@ -1,27 +1,29 @@
 #include "../../includes/elec.h"
 
-static	char	**free_get_file(t_env *env)
+static	void	free_txt(char **txt)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (env->data.txt[i])
+	while (txt && txt[i])
 	{
-		free(env->data.txt[i]);
+		free(txt[i]);
 		++i;
 	}
-	free(env->data.txt);
-	env->data.txt = NULL;
-	return (NULL);
+	free(txt);
+	txt = NULL;
 }
 
-static	void	free_av_one(t_env *env)
+static	void	free_av(t_env *env)
 {
 	free(env->av.one);
 	env->av.one = NULL;
 	if (env->av.two != NULL)
 		free(env->av.two);
 	env->av.two = NULL;
+	if (env->av.three != NULL)
+		free(env->av.three);
+	env->av.three = NULL;
 }
 
 static	void	free_data(t_env *env)
@@ -52,19 +54,20 @@ static	void	free_data(t_env *env)
 		++i;
 	}
 	free(env->data.rules);
+	env->data.rules = NULL;
 	free(env->data.path);
+	env->data.path = NULL;
 }
 
-void		*free_elec(t_env *env, int end)
+void		*free_ulysse(t_env *env, int end)
 {
 	int	i;
 
 	i = 0;
 	if (++i < end)
-		free_av_one(env);
+		free_av(env);
 	if (++i < end)
-		env->data.txt =
-		free_get_file(env);
+		free_txt(env->data.txt);
 	if (++i < end)
 		free_data(env);
 	return (NULL);
