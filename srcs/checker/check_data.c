@@ -1,4 +1,4 @@
-#include "../../includes/elec.h"
+#include "../../includes/ulysse.h"
 
 /*
 ** Check a line of .elec extension file.

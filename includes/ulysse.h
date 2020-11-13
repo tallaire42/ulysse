@@ -8,6 +8,13 @@
 # include "struct.h"
 
 /*
+** ############### MACRO ###############
+*/
+
+# define PRINT 1
+# define PRINT_ACT "print"
+
+/*
 ** checker
 */
 
@@ -39,11 +46,13 @@ int	start_ulysse(t_env *env);
 void	*get_data(t_env *env);
 int	get_index(t_env *env);
 int	parser(t_env *env);
+int	wich_action(char *av);
 
 /*
 ** print
 */
 
+int	print(t_env *env);
 int	print_file(char *path_file);
 
 /*

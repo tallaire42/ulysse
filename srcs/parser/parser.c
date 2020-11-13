@@ -1,4 +1,4 @@
-#include "../../includes/elec.h"
+#include "../../includes/ulysse.h"
 
 int		parser(t_env *env)
 {
@@ -7,6 +7,7 @@ int		parser(t_env *env)
 
 	index = 0;
 	txt = NULL;
+	env->av.act = 0;
 	if (!(env->data.txt = get_file(env->av.one)))
 	{
 		free_ulysse(env, 2);
@@ -19,11 +20,9 @@ int		parser(t_env *env)
 		free_ulysse(env, 3);
 		return (-1);
 	}
-	if ((index = get_index(env)) < 0)
-		return (-1);
-	if (print_file(env->data.path[index]) < 0)
+	if ((env->av.act = wich_action(env->av.two)) < 0)
 	{
-		free_ulysse(env, 4);
+		free_ulysse(env, 3);
 		return (-1);
 	}
 	return (1);

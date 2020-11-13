@@ -1,4 +1,4 @@
-#include "../../includes/elec.h"
+#include "../../includes/ulysse.h"
 
 static	size_t	strlen_sep(char *str, char sep)
 {

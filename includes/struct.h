@@ -15,6 +15,7 @@ typedef		struct	s_av
 	char	*one;
 	char	*two;
 	char	*three;
+	int	act;
 }			t_av;
 
 typedef		struct	s_env

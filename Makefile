@@ -20,12 +20,16 @@ SRC		+=	init_file.c
 SRC		+=	main.c
 SRC		+=	parser.c
 SRC		+=	print_file.c
+SRC		+=	print.c
 SRC		+=	strdup_sep.c
 SRC		+=	ulysse.c
+SRC		+=	wich_action.c
 
 OBJ_PATH	=	./.obj/
 
 vpath %.c srcs/
+vpath %.c srcs/action/
+vpath %.c srcs/action/print
 vpath %.c srcs/checker
 vpath %.c srcs/free
 vpath %.c srcs/init
@@ -38,7 +42,7 @@ OBJ		=	$(patsubst %.c, $(OBJ_PATH)%.o, $(SRC))
 
 LIBFT_NAME	=	libft.a
 
-HEADER_NAME	=	elec.h
+HEADER_NAME	=	ulysse.h
 
 LIB_PATH	=	./.lib
 

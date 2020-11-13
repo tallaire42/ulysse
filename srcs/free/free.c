@@ -1,4 +1,4 @@
-#include "../../includes/elec.h"
+#include "../../includes/ulysse.h"
 
 static	void	free_txt(char **txt)
 {

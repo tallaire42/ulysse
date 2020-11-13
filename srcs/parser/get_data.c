@@ -1,8 +1,8 @@
-#include "../../includes/elec.h"
+#include "../../includes/ulysse.h"
 
 void	*free_get_data(t_env *env)
 {
-	int	i
+	int	i;
 
 	i = 0;
 	while (env->data.rules && env->data.rules[i])
