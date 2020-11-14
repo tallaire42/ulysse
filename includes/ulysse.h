@@ -13,6 +13,8 @@
 
 # define PRINT 1
 # define PRINT_ACT "print"
+# define HELP 2
+# define HELP_ACT "help"
 
 /*
 ** checker
@@ -54,6 +56,12 @@ int	wich_action(char *av);
 
 int	print(t_env *env);
 int	print_file(char *path_file);
+
+/*
+** help
+*/
+
+void		help(t_env *env);
 
 /*
 ** utils

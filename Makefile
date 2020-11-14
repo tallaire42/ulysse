@@ -15,6 +15,7 @@ SRC		+=	free.c
 SRC		+=	get_data.c
 SRC		+=	get_file.c
 SRC		+=	get_index.c
+SRC		+=	help.c
 SRC		+=	init.c
 SRC		+=	init_file.c
 SRC		+=	main.c
@@ -29,6 +30,7 @@ OBJ_PATH	=	./.obj/
 
 vpath %.c srcs/
 vpath %.c srcs/action/
+vpath %.c srcs/action/help
 vpath %.c srcs/action/print
 vpath %.c srcs/checker
 vpath %.c srcs/free
