@@ -4,4 +4,5 @@ puissance  ./files/elec/puissance.md
 source  ./files/elec/source.md
 recepteur ./files/elec/recepteur.md
 chemin ./files/elec/chemin.md
-
+conditionnal_jump ./files/asm/conditionnal_jump.md
+math_op ./files/asm/math_op.md
