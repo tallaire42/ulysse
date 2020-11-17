@@ -25,6 +25,7 @@ SRC		+=	print.c
 SRC		+=	strdup_sep.c
 SRC		+=	ulysse.c
 SRC		+=	wich_action.c
+SRC		+=	wich_branch.c
 
 OBJ_PATH	=	./.obj/
 

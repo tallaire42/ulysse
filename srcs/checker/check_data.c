@@ -36,24 +36,24 @@ static	int	check_this_line(char *line)
 	return (1);
 }
 
-int		check_data(t_env *env)
+int		check_data(char **txt)
 {
 	int	i;
 
 	i = 0;
-	while (env->data.txt[i] != NULL)
+	while (txt[i] != NULL)
 	{
-		while (env->data.txt[i] != NULL && env->data.txt[i][0] == '\0')
+		while (txt[i] != NULL && txt[i][0] == '\0')
 		{
 			++i;
-			if (env->data.txt[i] == NULL)
+			if (txt[i] == NULL)
 				break ;
 		}
-		if (env->data.txt[i] == NULL)
+		if (txt[i] == NULL)
 			break ;
-		if (check_this_line(env->data.txt[i]) < 0)
+		if (check_this_line(txt[i]) < 0)
 		{
-			printf("Error\nWrong data in %s\n", env->av.one);
+			printf("Error\nWrong data in data.uly\n");
 			printf("(line : %d)", i + 1);
 			return (-1);
 		}

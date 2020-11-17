@@ -61,11 +61,6 @@ static	int	get_av_one(t_env *env, char *av)
 	if (av[i - 1] != 'y' || av[i - 2] != 'l' ||
 		av[i - 3] != 'u' || av[i - 4] != '.')
 		return (at_error("Wrong file extension"));
-	if (open(av, O_RDONLY) <= 0)
-	{
-		printf("Error\nCan't find or open %s", av);
-		return (-1);
-	}
 	if (!(env->av.one = ft_strdup(av)))
 		return (at_error("First argument alloc memory failed"));
 	return (1);

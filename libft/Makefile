@@ -42,6 +42,7 @@ SRC_NAME =		c_is_str.c\
 		ft_putstr_fd.c\
 		ft_split.c\
 		ft_strchr.c\
+		ft_strcat.c\
 		ft_strcpy.c\
 		ft_strdup.c\
 		ft_strjoin.c\

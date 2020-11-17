@@ -20,7 +20,7 @@
 ** checker
 */
 
-int	check_data(t_env *env);
+int	check_data(char **txt);
 
 /*
 ** free
@@ -49,6 +49,7 @@ void	*get_data(t_env *env);
 int	get_index(t_env *env);
 int	parser(t_env *env);
 int	wich_action(char *av);
+char	*wich_branch(char *file_path);
 
 /*
 ** print
