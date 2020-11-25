@@ -15,6 +15,15 @@
 # define PRINT_ACT "print"
 # define HELP 2
 # define HELP_ACT "help"
+# define ADD 3
+# define ADD_ACT "add"
+
+/*
+** add
+*/
+
+int	add(t_env *env);
+char	*get_rule(char *av);
 
 /*
 ** checker

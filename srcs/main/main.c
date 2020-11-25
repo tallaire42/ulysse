@@ -6,16 +6,6 @@ static	int	get_av_three(t_env *env, char *av)
 
 	i = 0;
 	env->av.three = NULL;
-	while (av[i])
-	{
-		if (ft_isalpha(av[i]) == 0 && av[i] != '_')
-		{
-			free_ulysse(env, 2);
-			printf("Second argument must has only alpha character");
-			return (-1);
-		}
-		++i;
-	}
 	if (!(env->av.three = ft_strdup(av)))
 	{
 		free_ulysse(env, 2);

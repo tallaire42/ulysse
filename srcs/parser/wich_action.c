@@ -20,5 +20,7 @@ int		wich_action(char *av)
 		return (PRINT);
 	if (is_str(av, HELP_ACT) > 0)
 		return (HELP);
+	if (is_str(av, ADD_ACT) > 0)
+		return (ADD);
 	return (at_error("Unknown action"));
 }
