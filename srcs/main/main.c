@@ -61,7 +61,7 @@ int		main(int argc, char **argv)
 	t_env	env;
 
 	init(&env);
-	if (argc != 4)
+	if (argc < 1 || argc > 2)
 		return (0);
 	if (get_av_one(&env, argv[1]) < 0)
 		return (0);

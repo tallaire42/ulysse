@@ -1,31 +1,6 @@
 #include "../../../includes/ulysse.h"
 
 /*
-** alloc and copy the rule from the path
-*/
-
-static	char	*rule_cpy(char *path, size_t start, size_t end)
-{
-	char	*rule;
-	size_t	j;
-	size_t	i;
-
-	rule = NULL;
-	j = start;
-	i = 0;
-	if (!(rule = ft_calloc(end - start + 1, sizeof(char))))
-		return (at_err_null("failed to copy the rule"));
-	while (path[j] && j < end)
-	{
-		rule[i] = path[j];
-		++i;
-		++j;
-	}
-	rule[i] = '\0';
-	return (rule);
-}
-
-/*
 ** find the end of the rule in the path
 */
 
@@ -63,7 +38,7 @@ static	size_t	get_start(char *path)
 ** find the rule inside the file's path
 */
 
-char	*get_rule(char *av)
+int	check_rule(char *av)
 {
 	size_t	end;
 	size_t	start;
@@ -73,9 +48,7 @@ char	*get_rule(char *av)
 	start = get_start(av);
 	end = get_end(av + start) + start;
 	if (start >= end)
-		return (at_err_null("file name is missing in the path"));
-	if (!(rule = rule_cpy(av, start, end)))
-		return (NULL);
-	return (rule);
+		return (at_error("file name is missing in the path"));
+	return (1);
 }
 

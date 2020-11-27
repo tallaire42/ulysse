@@ -2,12 +2,17 @@
 
 int		add(t_env *env)
 {
-	char	*rule;
+	char	*file_path;
 
-	rule = NULL;
-	if (!(rule = get_rule(env->av.three)))
-	{
+	if (at_open(env->av.three) <= 0)
 		return (-1);
-	}
+	if (check_rule(env->av.three) < 0)
+		return (-1);
+	if (!(file_path = get_added_path(env)))
+		return (-1);
+	if (insert_rule(env) < 0)
+		return (-1);
+	if (cpy_file(env) < 0)
+		return (-1);
 	return (1);
 }

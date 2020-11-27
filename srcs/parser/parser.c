@@ -3,15 +3,17 @@
 int		parser(t_env *env)
 {
 	int	index;
-	char	*path_branch;
 	char	**txt;
 
 	index = 0;
 	txt = NULL;
 	env->av.act = 0;
-	if (!(path_branch = wich_branch("data.uly")))
+	if (!(env->branch.path = wich_branch(env->av.one)))
+	{
+		free_ulysse(env, 2);
 		return (-1);
-	if (!(env->data.txt = get_file(path_branch)))
+	}
+	if (!(env->data.txt = get_file(env->branch.path)))
 	{
 		free_ulysse(env, 2);
 		return (-1);

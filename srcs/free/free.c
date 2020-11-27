@@ -24,6 +24,9 @@ static	void	free_av(t_env *env)
 	if (env->av.three != NULL)
 		free(env->av.three);
 	env->av.three = NULL;
+	if (env->branch.path != NULL)
+		free(env->branch.path);
+	env->branch.path = NULL;
 }
 
 static	void	free_data(t_env *env)

@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <unistd.h>
 # include "lib_h/libft.h"
 # include "struct.h"
 
@@ -23,7 +24,11 @@
 */
 
 int	add(t_env *env);
-char	*get_rule(char *av);
+int	cpy_file(t_env *env);
+char	*get_file_name(char *path);
+int	check_rule(char *av);
+char	*get_added_path(t_env *env);
+int	insert_rule(t_env *env);
 
 /*
 ** checker
