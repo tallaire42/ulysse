@@ -38,7 +38,7 @@ static	int	get_rules_and_def(t_env *env, char *str, int j)
 	if (!(env->branch.path[j] = strdup_sep(str + i, ' ')))
 		return (-1);
 	env->branch.path[j + 1] = NULL;
-	return (1);
+	return (0);
 }
 
 static	char	**alloc_path(t_env *env, size_t size)
@@ -50,7 +50,8 @@ static	char	**alloc_path(t_env *env, size_t size)
 	{
 		free(env->branch.rules);
 		env->branch.rules = NULL;
-		printf("Error\nAlloc memory failed in %s", DATAFILE);
+		printf("%sError%s\n", RED, NC);
+		printf("Alloc memory failed in %s", DATAFILE);
 		return (NULL);
 	}
 	return (new);
@@ -63,7 +64,8 @@ static	char	**alloc_rules(size_t size)
 	new = NULL;
 	if (!(new = (char **)calloc(size + 1, sizeof(char *))))
 	{
-		printf("Error\nAlloc memory failed in %s", DATAFILE);
+		printf("%sError%s\n", RED, NC);
+		printf("Alloc memory failed in %s", DATAFILE);
 		return (NULL);
 	}
 	return (new);
@@ -87,7 +89,7 @@ static	size_t	how_many_rules(char **txt, char *file_name)
 		++i;
 	}
 	if (nb_rules == 0)
-		printf("Error\n%s is empty", file_name);
+		printf("%sError%s\n%s is empty", RED, NC, file_name);
 	return (nb_rules);
 }
 
@@ -111,7 +113,7 @@ void		*get_data(t_env *env)
 			++i;
 		if (env->branch.txt[i] == NULL)
 			break ;
-		if (get_rules_and_def(env, env->branch.txt[i], count) < 0)
+		if (get_rules_and_def(env, env->branch.txt[i], count))
 			return (free_get_data(env));
 		++count;
 		++i;

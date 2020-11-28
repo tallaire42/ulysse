@@ -3,5 +3,5 @@
 int		cpy_file(t_env *env)
 {
 	(void)env;
-	return (1);
+	return (0);
 }

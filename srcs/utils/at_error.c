@@ -2,12 +2,12 @@
 
 int	at_error(char *str)
 {
-	printf("Error\n%s", str);
+	printf("%sError%s\n%s", RED, NC, str);
 	return (-1);
 }
 
 char	*at_err_null(char *str)
 {
-	printf("Error\n%s", str);
+	printf("%sError%s\n%s", RED, NC, str);
 	return (NULL);
 }

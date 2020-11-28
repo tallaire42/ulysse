@@ -8,7 +8,8 @@ static	int	create_files(t_env *env)
 	env->data.fd = open(DATAFILE, O_CREAT, MODE_FILE);
 	if (!(env->data.path = getcwd(env->data.path, 4096)))
 	{
-		printf("Error\nCan't find current working directory");
+		printf("%sError%s\n", RED, NC);
+		printf("Can't find current working directory");
 		return (-1);
 	}
 	ret = mkdir("tmp", 0);
@@ -16,7 +17,7 @@ static	int	create_files(t_env *env)
 	{
 		if ((ret = chmod("tmp", MODE_DIR)) < 0)
 		{
-			printf("Error\n");
+			printf("%sError%s\n", RED, NC);
 			printf("Can't set right permission to %s", TMPDIR);
 			return (-1);
 		}
@@ -27,12 +28,12 @@ static	int	create_files(t_env *env)
 static	int	action(t_env *env, int action)
 {
 	if (PRINT == action)
-		if (print(env) < 0)
+		if (print(env))
 			return (-1);
 	if (HELP == action)
 		help(env);
 	if (ADD == action)
-		if (add(env) < 0)
+		if (add(env))
 			return (-1);
 	if (SET == action)
 		if (set(env))

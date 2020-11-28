@@ -13,7 +13,8 @@ char		*get_file_name(char *path)
 		++i;
 	if (!(file_name = ft_calloc(ft_strlen(path + i) + 1, sizeof(char))))
 	{
-		printf("Error\nCan't get file name of %s\n", path);
+		printf("%sError%s\n", RED, NC);
+		printf("Can't get file name of %s\n", path);
 		return (NULL);
 	}
 	while (path[i])

@@ -14,5 +14,5 @@ int		print_file(char *path_file)
 		free(line);
 	}
 	free(line);
-	return (1);
+	return (0);
 }

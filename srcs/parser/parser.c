@@ -18,7 +18,7 @@ int		parser(t_env *env)
 		free_ulysse(env, 2);
 		return (-1);
 	}
-	if (check_data(env->branch.txt) < 0)
+	if (check_data(env->branch.txt))
 		return (-1);
 	if (!(get_data(env)))
 	{

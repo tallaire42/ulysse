@@ -9,7 +9,7 @@ static	int	get_av_two(t_env *env, char *av)
 	if (c_is_str(av, ' ') > 0)
 	{
 		free_ulysse(env, 2);
-		printf("Error\n");
+		printf("%sError%s\n", RED, NC);
 		printf("%s must not have space character (' ')\n", av);
 		printf("Please, rename your file");
 		return (-1);

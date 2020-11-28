@@ -63,7 +63,8 @@ static	char	*get_rule(char *str)
 		--size;
 	if (!(rule = ft_calloc(size + 1, sizeof(char))))
 	{
-		printf("Error\nAlloc memory failed with %s file", str);
+		printf("%sError%s\n", RED, NC);
+		printf("Alloc memory failed with %s file", str);
 		return (NULL);
 	}
 	while (i < size)
@@ -92,12 +93,14 @@ char		*get_added_path(t_env *env)
 		return (NULL);
 	if (!(path_file = make_path_start(env->data.path)))
 	{
-		printf("Error\nFailed alloc memory path of %s\n", file_name);
+		printf("%sError%s\n", RED, NC);
+		printf("Failed alloc memory path of %s\n", file_name);
 		return (NULL);
 	}
 	if (!(path_file = add_path_end(path_file, "files", file_name)))
 	{
-		printf("Error\nFailed alloc memory path of %s\n", file_name);
+		printf("%sError%s\n", RED, NC);
+		printf("Failed alloc memory path of %s\n", file_name);
 		return (NULL);
 	}
 	return (path_file);

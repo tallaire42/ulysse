@@ -33,7 +33,7 @@ static	int	check_this_line(char *line)
 			return (-1);
 		++i;
 	}
-	return (1);
+	return (0);
 }
 
 int		check_data(char **txt)
@@ -51,13 +51,13 @@ int		check_data(char **txt)
 		}
 		if (txt[i] == NULL)
 			break ;
-		if (check_this_line(txt[i]) < 0)
+		if (check_this_line(txt[i]))
 		{
-			printf("Error\nWrong data in data.uly\n");
+			printf("%sError%s\nWrong data in data.uly\n", RED, NC);
 			printf("(line : %d)", i + 1);
 			return (-1);
 		}
 		++i;
 	}
-	return (1);
+	return (0);
 }

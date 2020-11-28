@@ -9,7 +9,7 @@ static	size_t	get_end(char *path)
 	size_t	i;
 
 	i = ft_strlen(path);
-	if (c_is_str(path, '.') < 0)
+	if (c_is_str(path, '.'))
 		return (i);
 	while (i > 0 && path[i] != '.')
 		--i;
@@ -49,6 +49,6 @@ int	check_rule(char *av)
 	end = get_end(av + start) + start;
 	if (start >= end)
 		return (at_error("file name is missing in the path"));
-	return (1);
+	return (0);
 }
 

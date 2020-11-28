@@ -2,7 +2,7 @@
 
 static	int	av_missing(void)
 {
-	printf("Error\n");
+	printf("%sError%s\n", RED, NC);
 	printf("The name of the NEW_BRANCH is missing\n");
 	printf("Please specify the name of the new branch to create\n");
 	printf("As follow :\n\n");
