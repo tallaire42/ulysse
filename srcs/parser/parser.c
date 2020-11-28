@@ -8,27 +8,27 @@ int		parser(t_env *env)
 	index = 0;
 	txt = NULL;
 	env->av.act = 0;
-	if (!(env->branch.path = wich_branch(env->av.one)))
+	if (!(env->data.path = wich_branch(DATAFILE)))
 	{
 		free_ulysse(env, 2);
 		return (-1);
 	}
-	if (!(env->data.txt = get_file(env->branch.path)))
+	if (!(env->branch.txt = get_file(env->data.path)))
 	{
 		free_ulysse(env, 2);
 		return (-1);
 	}
-	if (check_data(env->data.txt) < 0)
+	if (check_data(env->branch.txt) < 0)
 		return (-1);
 	if (!(get_data(env)))
 	{
 		free_ulysse(env, 3);
 		return (-1);
 	}
-	if ((env->av.act = wich_action(env->av.two)) < 0)
+	if ((env->av.act = wich_action(env->av.one)) < 0)
 	{
 		free_ulysse(env, 3);
 		return (-1);
 	}
-	return (1);
+	return (0);
 }

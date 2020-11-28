@@ -21,45 +21,26 @@ static	void	free_av(t_env *env)
 	if (env->av.two != NULL)
 		free(env->av.two);
 	env->av.two = NULL;
-	if (env->av.three != NULL)
-		free(env->av.three);
-	env->av.three = NULL;
-	if (env->branch.path != NULL)
-		free(env->branch.path);
-	env->branch.path = NULL;
+	if (env->data.path != NULL)
+		free(env->data.path);
+	env->data.path = NULL;
 }
 
 static	void	free_data(t_env *env)
 {
 	int	i;
-	/*
-	int	j;
 
-	j = 0;
-	while (env->data.def[j])
-	{
-		i = 0;
-		while (env->data.def[j][i])
-		{
-			free(env->data.def[j][i]);
-			++i;
-		}
-		free(env->data.def[j]);
-		++j;
-	}
-	free(env->data.def);
-	*/
 	i = 0;
-	while (env->data.rules[i])
+	while (env->branch.rules[i])
 	{
-		free(env->data.path[i]);
-		free(env->data.rules[i]);
+		free(env->branch.path[i]);
+		free(env->branch.rules[i]);
 		++i;
 	}
-	free(env->data.rules);
-	env->data.rules = NULL;
-	free(env->data.path);
-	env->data.path = NULL;
+	free(env->branch.rules);
+	env->branch.rules = NULL;
+	free(env->branch.path);
+	env->branch.path = NULL;
 }
 
 void		*free_ulysse(t_env *env, int end)
@@ -70,7 +51,7 @@ void		*free_ulysse(t_env *env, int end)
 	if (++i < end)
 		free_av(env);
 	if (++i < end)
-		free_txt(env->data.txt);
+		free_txt(env->branch.txt);
 	if (++i < end)
 		free_data(env);
 	return (NULL);

@@ -5,9 +5,9 @@ void		help(t_env *env)
 	int	i;
 
 	i = 0;
-	while (env->data.rules[i])
+	while (env->branch.rules[i])
 	{
-		printf("%s\n", env->data.rules[i]);
+		printf("%s\n", env->branch.rules[i]);
 		++i;
 	}
 }

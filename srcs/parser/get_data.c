@@ -5,21 +5,21 @@ void	*free_get_data(t_env *env)
 	int	i;
 
 	i = 0;
-	while (env->data.rules && env->data.rules[i])
+	while (env->branch.rules && env->branch.rules[i])
 	{
-		free(env->data.rules[i]);
+		free(env->branch.rules[i]);
 		++i;
 	}
-	free(env->data.rules);
-	env->data.rules = NULL;
+	free(env->branch.rules);
+	env->branch.rules = NULL;
 	i = 0;
-	while (env->data.path && env->data.path[i])
+	while (env->branch.path && env->branch.path[i])
 	{
-		free(env->data.path[i]);
+		free(env->branch.path[i]);
 		++i;
 	}
-	free(env->data.path);
-	env->data.path = NULL;
+	free(env->branch.path);
+	env->branch.path = NULL;
 	return (NULL);
 }
 
@@ -28,16 +28,16 @@ static	int	get_rules_and_def(t_env *env, char *str, int j)
 	int	i;
 
 	i = 0;
-	if (!(env->data.rules[j] = strdup_sep(str, ' ')))
+	if (!(env->branch.rules[j] = strdup_sep(str, ' ')))
 		return (-1);
-	env->data.rules[j + 1] = NULL;
+	env->branch.rules[j + 1] = NULL;
 	while (str[i] != '\0' && str[i] != ' ')
 		++i;
 	while (str[i] != '\0' && str[i] == ' ')
 		++i;
-	if (!(env->data.path[j] = strdup_sep(str + i, ' ')))
+	if (!(env->branch.path[j] = strdup_sep(str + i, ' ')))
 		return (-1);
-	env->data.path[j + 1] = NULL;
+	env->branch.path[j + 1] = NULL;
 	return (1);
 }
 
@@ -48,22 +48,22 @@ static	char	**alloc_path(t_env *env, size_t size)
 	new = NULL;
 	if (!(new = (char **)calloc(size + 1, sizeof(char *))))
 	{
-		free(env->data.rules);
-		env->data.rules = NULL;
-		printf("Error\nAlloc memory failed in %s", env->av.one);
+		free(env->branch.rules);
+		env->branch.rules = NULL;
+		printf("Error\nAlloc memory failed in %s", DATAFILE);
 		return (NULL);
 	}
 	return (new);
 }
 
-static	char	**alloc_rules(t_env *env, size_t size)
+static	char	**alloc_rules(size_t size)
 {
 	char	**new;
 
 	new = NULL;
 	if (!(new = (char **)calloc(size + 1, sizeof(char *))))
 	{
-		printf("Error\nAlloc memory failed in %s", env->av.one);
+		printf("Error\nAlloc memory failed in %s", DATAFILE);
 		return (NULL);
 	}
 	return (new);
@@ -99,22 +99,22 @@ void		*get_data(t_env *env)
 
 	i = 0;
 	count = 0;
-	if ((nb_rules = how_many_rules(env->data.txt, env->av.one)) < 0)
+	if ((nb_rules = how_many_rules(env->branch.txt, DATAFILE)) < 0)
 		return (NULL);
-	if (!(env->data.rules = alloc_rules(env, nb_rules)))
+	if (!(env->branch.rules = alloc_rules(nb_rules)))
 		return (NULL);
-	if (!(env->data.path = alloc_path(env, nb_rules)))
+	if (!(env->branch.path = alloc_path(env, nb_rules)))
 		return (NULL);
-	while (env->data.txt[i] != NULL)
+	while (env->branch.txt[i] != NULL)
 	{
-		while (env->data.txt[i] != NULL && env->data.txt[i][0] == '\0')
+		while (env->branch.txt[i] != NULL && env->branch.txt[i][0] == '\0')
 			++i;
-		if (env->data.txt[i] == NULL)
+		if (env->branch.txt[i] == NULL)
 			break ;
-		if (get_rules_and_def(env, env->data.txt[i], count) < 0)
+		if (get_rules_and_def(env, env->branch.txt[i], count) < 0)
 			return (free_get_data(env));
 		++count;
 		++i;
 	}
-	return (env->data.rules);
+	return (env->branch.rules);
 }

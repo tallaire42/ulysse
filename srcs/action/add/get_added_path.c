@@ -86,11 +86,11 @@ char		*get_added_path(t_env *env)
 
 	path_file = NULL;
 	env->add.rule = NULL;
-	if (!(file_name = get_file_name(env->av.three)))
+	if (!(file_name = get_file_name(env->av.two)))
 		return (NULL);
 	if (!(env->add.rule = get_rule(file_name)))
 		return (NULL);
-	if (!(path_file = make_path_start(env->branch.path)))
+	if (!(path_file = make_path_start(env->data.path)))
 	{
 		printf("Error\nFailed alloc memory path of %s\n", file_name);
 		return (NULL);

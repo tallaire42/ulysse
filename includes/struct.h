@@ -6,24 +6,25 @@ typedef		struct	s_add
 	char	*rule;
 }			t_add;
 
-typedef		struct	s_branch
+typedef		struct	s_data
 {
 	char	*path;
-}			t_branch;
+	int	fd;
+}			t_data;
 
-typedef		struct	s_data
+typedef		struct	s_branch
 {
 	char	**rules;
 	char	**path;
-	size_t	size;
 	char	**txt;
-}			t_data;
+}			t_branch;
 
 typedef		struct	s_av
 {
 	char	*one;
 	char	*two;
 	char	*three;
+	int	argc;
 	int	act;
 }			t_av;
 

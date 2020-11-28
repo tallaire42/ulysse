@@ -11,16 +11,18 @@ static	int	is_str(char *s1, char *s2)
 			return (-1);
 		++i;
 	}
-	return (1);
+	return (0);
 }
 
 int		wich_action(char *av)
 {
-	if (is_str(av, PRINT_ACT) > 0)
+	if (!is_str(av, PRINT_ACT))
 		return (PRINT);
-	if (is_str(av, HELP_ACT) > 0)
+	if (!is_str(av, HELP_ACT))
 		return (HELP);
-	if (is_str(av, ADD_ACT) > 0)
+	if (!is_str(av, ADD_ACT))
 		return (ADD);
+	if (!is_str(av, SET_ACT))
+		return (SET);
 	return (at_error("Unknown action"));
 }

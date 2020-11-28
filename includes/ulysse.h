@@ -5,19 +5,76 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <sys/stat.h>
 # include "lib_h/libft.h"
 # include "struct.h"
 
 /*
+** #####################################
 ** ############### MACRO ###############
+** #####################################
 */
 
-# define PRINT 1
-# define PRINT_ACT "print"
-# define HELP 2
-# define HELP_ACT "help"
-# define ADD 3
-# define ADD_ACT "add"
+/*
+** ############## ACTIONS ##############
+*/
+
+# define PRINT          1
+# define PRINT_ACT      "print"
+# define HELP           2
+# define HELP_ACT       "help"
+# define ADD            3
+# define ADD_ACT        "add"
+# define SET            4
+# define SET_ACT        "set"
+
+/*
+** ########### FILES AND DIRS ##########
+*/
+
+# define SAVE           "save"
+# define DATAFILE       "data.uly"
+# define TMPDIR         "tmp"
+# define MODE_DIR       00771
+# define MODE_FILE      00666
+
+/*
+** ############## COLORS ###############
+*/
+
+//#include <iostream>
+
+#ifndef BG_LIGHT
+
+#define BLACK           "\033[1;30m"
+#define RED             "\033[1;31m"
+#define GREEN           "\033[1;32m"
+#define YELLOW          "\033[1;33m"
+#define BLUE            "\033[1;34m"
+#define PURPLE          "\033[1;35m"
+#define CYAN            "\033[1;36m"
+#define GREY            "\033[1;37m"
+#define NC              "\033[0m"
+
+#else
+
+#define BLACK           "\033[0;30m"
+#define RED             "\033[0;31m"
+#define GREEN           "\033[0;32m"
+#define YELLOW          "\033[0;33m"
+#define BLUE            "\033[0;34m"
+#define PURPLE          "\033[0;35m"
+#define CYAN            "\033[0;36m"
+#define GREY            "\033[0;37m"
+#define NC              "\033[0m"
+
+#endif
+
+/*
+** #####################################
+** ############# FUNCTIONS #############
+** #####################################
+*/
 
 /*
 ** add
@@ -41,6 +98,12 @@ int	check_data(char **txt);
 */
 
 void	*free_ulysse(t_env *env, int end);
+
+/*
+** help
+*/
+
+void		help(t_env *env);
 
 /*
 ** init
@@ -73,10 +136,10 @@ int	print(t_env *env);
 int	print_file(char *path_file);
 
 /*
-** help
+** set
 */
 
-void		help(t_env *env);
+int	set(t_env *env);
 
 /*
 ** utils

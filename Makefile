@@ -28,6 +28,7 @@ SRC		+=	main.c
 SRC		+=	parser.c
 SRC		+=	print_file.c
 SRC		+=	print.c
+SRC		+=	set.c
 SRC		+=	strdup_sep.c
 SRC		+=	ulysse.c
 SRC		+=	wich_action.c
@@ -40,6 +41,7 @@ vpath %.c srcs/action/
 vpath %.c srcs/action/add
 vpath %.c srcs/action/help
 vpath %.c srcs/action/print
+vpath %.c srcs/action/set
 vpath %.c srcs/checker
 vpath %.c srcs/free
 vpath %.c srcs/init
