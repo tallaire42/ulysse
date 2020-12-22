@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 /*
 ** Vérifie si le charactère [c] passé en paramettre est égale à

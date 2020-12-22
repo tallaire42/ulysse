@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../header/libft.h"
+#include "../includes/libft.h"
 
 static	size_t		ft_len(int n, int base)
 {

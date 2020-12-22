@@ -1,18 +1,14 @@
 #include "../../../includes/ulysse.h"
 
-static	int	av_missing(void)
-{
-	printf("%sError%s\n", RED, NC);
-	printf("The name of the NEW_BRANCH is missing\n");
-	printf("Please specify the name of the new branch to create\n");
-	printf("As follow :\n\n");
-	printf("uly set NEW_BRANCH\n\n");
-	return (-1);
-}
-
 int		set(t_env *env)
 {
-	if (env->av.argc == 2)
-		return av_missing();
+	if (env->av.argc < 3)
+		return (error_set_av_missing(env));
+	if (init_save(env))
+		return (error_set_init_save(env));
+	if (init_branch(env))
+		return (error_set_init_branch(env));
+	if (write_branch(env))
+		return (-1);
 	return (0);
 }

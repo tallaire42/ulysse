@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 /*
 ** Compte le nombre de de chaines de charactères à spliter
@@ -67,7 +67,8 @@ static	char	**ft_free_split(char **split, size_t i)
 		*(split + i) = NULL;
 		i--;
 	}
-	free(split);
+	if (split != NULL)
+		free(split);
 	split = NULL;
 	return (NULL);
 }
@@ -94,6 +95,7 @@ char			**ft_split(char const *s, char c)
 
 	i = -1;
 	nb_line = ft_nb_line(s, c);
+	split = NULL;
 	if (!s || !(split = (char **)malloc(sizeof(char *) * (nb_line + 1))))
 		return (NULL);
 	while (++i < (int)nb_line)

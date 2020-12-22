@@ -1,54 +1,36 @@
 #include "../../includes/ulysse.h"
 
-static	int	create_files(t_env *env)
-{
-	int	ret;
-
-	ret = 0;
-	env->data.fd = open(DATAFILE, O_CREAT, MODE_FILE);
-	if (!(env->data.path = getcwd(env->data.path, 4096)))
-	{
-		printf("%sError%s\n", RED, NC);
-		printf("Can't find current working directory");
-		return (-1);
-	}
-	ret = mkdir("tmp", 0);
-	if (ret == 0)
-	{
-		if ((ret = chmod("tmp", MODE_DIR)) < 0)
-		{
-			printf("%sError%s\n", RED, NC);
-			printf("Can't set right permission to %s", TMPDIR);
-			return (-1);
-		}
-	}
-	return (0);
-}
-
 static	int	action(t_env *env, int action)
 {
-	if (PRINT == action)
-		if (print(env))
+	if (SET == action)
+		if (set(env))
 			return (-1);
-	if (HELP == action)
-		help(env);
+	if (UNSET == action)
+		if (unset(env))
+			return (-1);
+	if (LS == action)
+		if (ls(env))
+			return (-1);
+	if (CD == action)
+		if (cd(env))
+			return (-1);
 	if (ADD == action)
 		if (add(env))
 			return (-1);
-	if (SET == action)
-		if (set(env))
+	if (RM == action)
+		if (rm(env))
+			return (-1);
+	if (PRINT == action)
+		if (print(env))
 			return (-1);
 	return (0);
 }
 
 int		start_ulysse(t_env *env)
 {
-	if (create_files(env))
-		return (-1);
-	if (parser(env))
-		return (-1);
+	if ((env->av.act = wich_action(env->av.one)) < 0)
+		return (error_ulysse_action(env));
 	if (action(env, env->av.act))
 		return (-1);
-	free_ulysse(env, 4);
 	return (0);
 }

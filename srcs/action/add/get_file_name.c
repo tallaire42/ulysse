@@ -1,28 +1,37 @@
 #include "../../../includes/ulysse.h"
 
-char		*get_file_name(char *path)
+static	int	check_path(char *av)
 {
-	char	*file_name;
-	size_t		i;
-	size_t		j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	file_name = NULL;
-	while (path[i] && (path[i] == '.' || path[i] == '/'))
-		++i;
-	if (!(file_name = ft_calloc(ft_strlen(path + i) + 1, sizeof(char))))
+	while (av && av[i])
 	{
-		printf("%sError%s\n", RED, NC);
-		printf("Can't get file name of %s\n", path);
+		if (av[i] == ' ')
+			return (-1);
+		++i;
+	}
+	if (i == 0)
+		return (-1);
+	return (0);
+}
+
+char		*get_file_name(char *av)
+{
+	size_t	i;
+	char	*name;
+
+	i = ft_strlen(av);
+	name = NULL;
+	if (check_path(av))
 		return (NULL);
-	}
-	while (path[i])
+	while (i > 0 && av[i - 1] != '/')
 	{
-		file_name[j] = path[i];
-		++i;
-		++j;
+		if (av[i - 1] == '.' && av[i - 2] == '.' && i == 2)
+			break ;
+		--i;
 	}
-	file_name[j] = '\0';
-	return (file_name);
+	if (!(name = ft_strdup(av + i)))
+		return (NULL);
+	return (name);
 }

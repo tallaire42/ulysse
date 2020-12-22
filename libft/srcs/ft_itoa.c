@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 /*
 ** Calcule la longueur necessaire de la chaine de caracteres renvoyée par

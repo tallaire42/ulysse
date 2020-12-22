@@ -24,5 +24,15 @@ int		wich_action(char *av)
 		return (ADD);
 	if (!is_str(av, SET_ACT))
 		return (SET);
-	return (at_error("Unknown action"));
+	if (!is_str(av, UNSET_ACT))
+		return (UNSET);
+	if (!is_str(av, LS_ACT))
+		return (LS);
+	if (!is_str(av, CD_ACT))
+		return (CD);
+	if (!is_str(av, RM_ACT))
+		return (RM);
+	if (!is_str(av, PRINT_ACT))
+		return (PRINT);
+	return (-1);
 }

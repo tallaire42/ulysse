@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/libft.h"
 
 int		ft_strlen_gnl(char *str)
 {

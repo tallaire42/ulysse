@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/libft.h"
 
 static	char	*stock_cat(char *str, char *buff, int *stop)
 {

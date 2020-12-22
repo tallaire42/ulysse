@@ -8,7 +8,7 @@ typedef		struct	s_add
 
 typedef		struct	s_data
 {
-	char	*path;
+	char	*curpath;
 	int	fd;
 }			t_data;
 

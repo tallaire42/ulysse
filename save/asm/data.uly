@@ -1,4 +1,0 @@
-conditionnal_jump ./save/asm/files/conditionnal_jump.md
-doc           ./save/asm/files/doc.md
-math_op              ./save/asm/files/math_op.md
-register  ./save/asm/files/register.md
