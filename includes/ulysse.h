@@ -1,5 +1,5 @@
-#ifndef DEF_ELEC_H
-# define DEF_ELEC_H
+#ifndef DEF_ULYSSE_H
+# define DEF_ULYSSE_H
 
 # include <errno.h>
 # include <stdio.h>
